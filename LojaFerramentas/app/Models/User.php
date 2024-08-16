@@ -48,7 +48,7 @@ class User extends Authenticatable
         ];
     }
     public function isAdmin(){
-        return $this->tipo_usuario === "adiministrador";
+        return $this->tipo_usuario === "administrador";
     }
 
     public function isClient(){

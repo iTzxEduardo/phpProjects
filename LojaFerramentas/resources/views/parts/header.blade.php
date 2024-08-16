@@ -10,7 +10,11 @@
 
     <button type="submit">Logout</button>
 </form>
-
+@if(Auth::user()->isAdmin())
+<div>
+    <a href="/produtos"><h3>Dashboard Produtos - ADM</h3></a>
+</div>
+@endif
 @else
 
 <div>
