@@ -67,4 +67,10 @@ class ProdutoController extends Controller
         return redirect()->route('produtos.index')->
         with('success','Produto Deletado com Sucesso');
     }
+
+    //mostrar os produtos
+    public function show(Produto $produto){
+        return view('produtos.show', compact('produto'));
+    }
+
 }

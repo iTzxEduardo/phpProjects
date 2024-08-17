@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<div class="container">
 
 @section('content')
     <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -24,4 +24,5 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+</div>
 @endsection
