@@ -1,11 +1,7 @@
-
 <?php
-
 
 namespace App\Http\Controllers;
 
-
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Projeto;
 
@@ -21,9 +17,7 @@ class ProjetoController extends Controller
         $projetos = Projeto::all();
         return view('projetos.index',compact('projetos'));
 
-
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -95,5 +89,9 @@ class ProjetoController extends Controller
 
         return redirect()->route('projetos.index')->
         with('sucess','projeto Deletado com Sucesso');
+    }
+    
+    public function show(Projeto $projeto){
+        return view('projetos.show', compact('projeto'));
     }
 }

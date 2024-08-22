@@ -2,29 +2,62 @@
 
 
 @section('content')
-    <h1>Dashboard de Projetos</h1>
 
-
-    <form method="GET" action="{{ route('dashboard') }}">
-        <input type="text" name="search" placeholder="Pesquisar projetos..." value="{{ request('search') }}">
-        <button type="submit">Pesquisar</button>
-    </form>
-
-
-    <div class="row">
-        @foreach ($projetos as $projeto)
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="/assets/img/img0.png" class="card-img-top" alt="{{ $projeto->nome }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $projeto->nome }}</h5>
-                        <p class="card-text">{{ $projeto->descricao }}</p>
- <p class="card-text">{{ $projeto->categoria }}</p>
-                        <p class="card-text">Preço: R$ {{ $projeto->preco }}</p>
-                        <a href="{{ route('projetos.show', $projeto->id) }}" class="btn btn-primary">Ver Projeto</a>
+    <div class="container my-4">
+        <div class="row">
+            @foreach ($projetos as $projeto)
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">{{ $projeto->nome }}</h2>
+                            <p class="card-text">{{ $projeto->descricao }}</p>
+                            <p class="card-text"><strong>Dias:</strong> {{ $projeto->tempo }}</p>
+                            <form method="POST" action="{{ route('inscricao.add', $projeto->id) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary w-100">Ver Deltalhe do Projeto</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
-@endsection
+    @endsection
+    
+    <style>
+    /* Customização dos cards */
+    .card {
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #343a40;
+    }
+    
+    .card-text {
+        font-size: 1rem;
+        color: #6c757d;
+    }
+    
+    /* Botão */
+    .btn-primary {
+        border-radius: 5px;
+        font-size: 1rem;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    </style>

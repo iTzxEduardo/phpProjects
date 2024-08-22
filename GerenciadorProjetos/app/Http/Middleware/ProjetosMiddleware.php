@@ -16,7 +16,7 @@ class ProjetosMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->tipo_usuario === 'administrador') {
+        if (Auth::check() && Auth::user()->tipo_usuario === 'supervisor') {
             return $next($request);
         } else {
             //se nao for uma empresa, redireciona com uma mensagem de erro

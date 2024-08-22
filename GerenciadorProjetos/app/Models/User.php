@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use Notifiable;
     use HasFactory, Notifiable;
 
     /**
@@ -20,7 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'tipo_ususario'
+        'tipo_usuario'
     ];
 
     /**
@@ -48,14 +51,16 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->tipo_usuario === 'administrador';
+        return $this->tipo_usuario === 'supervisor';
     }
 
 
     // Verifica se o usuário é um cliente
     public function isClient()
     {
-        return $this->tipo_usuario === 'cliente';
+        return $this->tipo_usuario === 'funcionario';
     }
+
+    
 
 }

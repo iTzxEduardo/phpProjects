@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\InscricaoController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\http\Controllers\ProjetoController;
 use App\Http\Middleware\ProjetosMiddleware;
 use App\http\Controllers\HomeController;
-
+use App\Models\Inscricao;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -30,6 +30,6 @@ Route::resource('/projetos', ProjetoController::class)->middleware(ProjetosMiddl
 Route::get('projetos/{projeto}',[ProjetoController::class,'show'])
 ->middleware('auth')->name('projetos.show');
 
-Route::post('carrinho/add/{projeto}',[CarrinhoController::class,'add'])
-->middleware('auth')->name('carrinho.add');
+Route::post('inscricao/add/{projeto}',[InscricaoController::class,'add'])
+->middleware('auth')->name('inscricao.add');
 
